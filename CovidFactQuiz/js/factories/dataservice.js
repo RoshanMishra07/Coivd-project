@@ -62,7 +62,7 @@
      *
      */
 
-    var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
+    var correctAnswers = [1, 1, 1, 2, 0, 0, 3, 0, 3, 2];    
 
     var quizQuestions  = [
         {
