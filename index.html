@@ -29,22 +29,30 @@
   </body>
 </html>
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     let jsonData = [];
     $.ajax({
       type: "GET",
       url: "https://corona-api.com/countries",
       dataType: "json",
-      success: function (result) {
-        _.forEach(result.data, function (elem) {
+      success: function(result) {
+        jsonData = result;
+        _.forEach(result.data, function(elem) {
           $("#country").append(
             "<option value=" + elem.code + ">" + elem.name + "</option>"
           );
         });
       },
-      error: function (error) {
+      error: function(error) {
         console.log(console.error());
-      },
+      }
+    });
+    $("#country").change(function() {
+      var selectedCountry = $("#country").val();
+      var selectedCountryData = _.filter(jsonData.data, {
+        code: selectedCountry
+      });
+      $("#confirmedCount").text(selectedCountryData[0].latest_data.confirmed);
     });
   });
 </script>
